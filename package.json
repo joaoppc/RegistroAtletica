@@ -68,7 +68,7 @@
       "resolved": "https://registry.npmjs.org/bignumber.js/-/bignumber.js-4.0.4.tgz",
       "version": "4.0.4"
     },
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.18.2",
     "bytes": {
       "integrity": "sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=",
       "resolved": "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz",
@@ -140,7 +140,7 @@
       "resolved": "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz",
       "version": "1.8.1"
     },
-    "express": "^4.16.3",
+    "express": "^4.16.2",
     "express-fileupload": "^0.3.0",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
@@ -251,7 +251,7 @@
       "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
       "version": "2.0.0"
     },
-    "mysql": "^2.16.0",
+    "mysql": "^2.15.0",
     "negotiator": {
       "integrity": "sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk=",
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz",
