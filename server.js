@@ -8,6 +8,8 @@ var fs = require('fs');
 var busboy = require("then-busboy");
 var fileUpload = require('express-fileupload');
 
+var modalidade;
+
 /*Set EJS template Engine*/
 app.set('views','./views');
 app.set('view engine','ejs');
@@ -22,7 +24,8 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'rachelpbm',
     password: 'adgjlra1',
-    database: 'atletica'
+    database: 'atletica',
+    multipleStatements: true
 })
 
 app.get('/', function (req, res) {
@@ -39,9 +42,14 @@ app.get('/nova_modalidade', function(req, res) {
     res.sendFile('views/cria_modalidade.html' , { root : __dirname});
  });
 
-app.get('/novo_jogo', function(req, res) {
-    res.sendFile('views/cria_jogo.html' , { root : __dirname});
- });
+app.get('/novo_jogo', function (req, res) {
+    connection.query('SELECT * FROM MODALIDADE', function (error, modalidades, fields) {
+        if (error) throw error;
+        modalidade = modalidades[0];
+        res.render('cria_jogo', {modalidades:modalidades});
+    });
+    console.log(modalidade);
+});
 
 app.get('/novo_endereco', function(req, res) {
     res.sendFile('views/cria_lugar.html' , { root : __dirname});
@@ -112,7 +120,7 @@ app.post('/novo_jogo', function(req, res) {
 
     var novo_jogo = {
         //foto: img_name,
-        Nome_Mod: req.body.nome,
+        Nome_Mod: req.body.modalidade,
         Genero_Mod: req.body.genero,
         ID_Lugar: req.body.lugar,
         Horario: req.body.horario

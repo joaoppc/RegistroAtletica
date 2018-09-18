@@ -136,9 +136,9 @@
           <label class="control-label col-sm-2" for="modalidade">Modalidade:</label>
           <div class="col-sm-10">          
             <select type="select" class="form-control" id="modalidade" name="modalidade">
-              //listar com modalidades disponiveis
-              <option value="Basq">Basquete</option>
-              <option value="kjzdfkdjgh">Handebol</option>
+              <% for(var modalidade=0; modalidade < modalidades.length; modalidade++) { %>
+              <option value="<%=modalidades[modalidade].Nome%>"><%=modalidades[modalidade].Nome%></option>
+              <%}%>
             </select>
           </div>
         </div>

@@ -73,12 +73,10 @@ CREATE TABLE JOGOS_TREINO (
     ID_Lugar INTEGER NOT NULL,
     Horario TIMESTAMP NULL,
     Adversario VARCHAR(30), 
-    ID_Jogo INTEGER NOT NULL 
-);
-
-ALTER TABLE JOGOS_TREINO
-	ADD PRIMARY KEY (Nome_Mod,Genero_Mod,ID_Lugar);
+    ID_Jogo INT NOT NULL auto_increment primary key
     
+);
+   
     
 
         
