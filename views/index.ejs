@@ -57,6 +57,8 @@
           <li><a href="#modalidade">Modalidades</a>
           </li>
           <li><a href="#jogo">Jogos</a></li>
+          <li><a href="#atleta">Atletas</a></li>
+          <li><a href="#tecnico">Técnicos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -284,6 +286,46 @@
             };
           </script>
         </section><!-- #jogo -->
+
+        <!--==========================
+      Atletas
+    ============================-->
+    <section id="atleta">
+      <div class="container">
+        <div class="section-header wow fadeInUp">
+          <h3>Atletas</h3>
+          <p>Nossos jogadores</p>
+          <center><button align="center" id="cria_atleta" href="novo_atleta" type="submit">Nova atleta</button></center>
+          <script type="text/javascript">
+            document.getElementById("cria_atleta").onclick = function () {
+              location.href = "novo_atleta";
+            };
+          </script>
+        </div>
+      </div>
+      <br>
+      <br>
+    </section><!-- #atletas -->
+
+            <!--==========================
+      Atletas
+    ============================-->
+    <section id="tecnico">
+      <div class="container">
+        <div class="section-header wow fadeInUp">
+          <h3>Técnicos</h3>
+          <p>Nossos treinadores</p>
+          <center><button align="center" id="cria_tecnico" href="novo_tecnico" type="submit">Nova técnico</button></center>
+          <script type="text/javascript">
+            document.getElementById("cria_tecnico").onclick = function () {
+              location.href = "novo_tecnico";
+            };
+          </script>
+        </div>
+      </div>
+      <br>
+      <br>
+    </section><!-- #atletas -->
 
     <!--==========================
       Contact Section

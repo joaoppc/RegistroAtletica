@@ -1013,6 +1013,34 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #e6e6e6;
 }
 
+#atleta button[type="submit"] {
+  background: #cd1431;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+  align-self: : center;
+}
+
+#atleta button[type="submit"]:hover {
+  background: #e6e6e6;
+}
+
+#tecnico button[type="submit"] {
+  background: #cd1431;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+  align-self: : center;
+}
+
+#tecnico button[type="submit"]:hover {
+  background: #e6e6e6;
+}
+
 /* Clients Section
 --------------------------------*/
 #clients {
