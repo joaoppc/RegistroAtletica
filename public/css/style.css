@@ -999,6 +999,20 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-transform: uppercase;
 }
 
+#jogo button[type="submit"] {
+  background: #cd1431;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+  align-self: : center;
+}
+
+#jogo button[type="submit"]:hover {
+  background: #e6e6e6;
+}
+
 /* Clients Section
 --------------------------------*/
 #clients {
@@ -1185,6 +1199,20 @@ body.mobile-nav-active #mobile-nav-toggle {
 #modalidade .mod .social i {
   font-size: 18px;
   margin: 0 2px;
+}
+
+#modalidade button[type="submit"] {
+  background: #cd1431;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  cursor: pointer;
+  align-self: : center;
+}
+
+#modalidade button[type="submit"]:hover {
+  background: #e6e6e6;
 }
 
 /* Contact Section

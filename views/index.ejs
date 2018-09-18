@@ -54,16 +54,9 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#intro">Página Inicial</a></li>
-          <li class="menu-has-children"><a href="#modalidade">Modalidades</a>
-            <ul>
-            <!--Aqui fazer uma lista com base na tabela Modalidades do banco de dados -->
-              <li><a href="#basq_fem">Basquete Feminino</a></li>
-              <li><a href="#basq_masc">Basquete Masculino</a></li>
-              <li><a href="#hand_fem">Handebol Feminino</a></li>
-              <li><a href="#hand_masc">Handebol Masculino</a></li>
-            </ul>
+          <li><a href="#modalidade">Modalidades</a>
           </li>
-          <li><a href="#jogo">Próximos Jogos</a></li>
+          <li><a href="#jogo">Jogos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -142,7 +135,14 @@
         <div class="section-header wow fadeInUp">
           <h3>Modalidades</h3>
           <p>Nossos times</p>
+          <center><button align="center" id="cria_mod" href="nova_modalidade" type="submit">Nova modalidade</button></center>
+          <script type="text/javascript">
+            document.getElementById("cria_mod").onclick = function () {
+              location.href = "nova_modalidade";
+            };
+          </script>
         </div>
+        <br>
 
         <div class="row">
         <!-- AQUI VAI TER QUE FAZER UM FOR PELAS MODALIDADES -->
@@ -205,9 +205,7 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </section><!-- #modalidades -->
 
@@ -315,7 +313,20 @@
           </div>
         </div>
       </div>
-    </section><!-- #jogo -->
+      <center><button align="center" id="cria_jogo" href="novo_jogo" type="submit">Novo Jogo</button></center><br>
+      <center><button align="center" id="cria_lugar" href="novo_endereco" type="submit">Novo Lugar</button></center>
+        <script type="text/javascript">
+            document.getElementById("cria_jogo").onclick = function () {
+              location.href = "novo_jogo";
+            };
+          </script>
+
+          <script type="text/javascript">
+            document.getElementById("cria_lugar").onclick = function () {
+              location.href = "novo_endereco";
+            };
+          </script>
+        </section><!-- #jogo -->
 
     <!--==========================
       Contact Section
