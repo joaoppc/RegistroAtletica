@@ -37,6 +37,7 @@ app.get('/', function (req, res) {
     connection.query('SELECT * FROM MODALIDADE', function (error, modalidades, fields) {
         if (error) throw error;
         console.log("Quantidade de modalidades:" + modalidades.length);
+        console.log(modalidades[0].Nome);
         //listar modalidades
         //listar jogos
         res.render('index', {modalidades:modalidades});
