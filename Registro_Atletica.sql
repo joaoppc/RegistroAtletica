@@ -8,9 +8,7 @@ CREATE TABLE ATLETA (
     Curso VARCHAR(20) NOT NULL,
     Genero VARCHAR(10) NULL,
     Imagem blob NULL,
-    CHECK (Genero = 'M' OR Genero = 'F'),
-    Semestre_Inclusao INTEGER NOT NULL,
-    Socio BOOLEAN NOT NULL
+    CHECK (Genero = 'M' OR Genero = 'F')
 );
 
 ALTER TABLE ATLETA
@@ -27,7 +25,7 @@ ALTER TABLE MODALIDADE
     ADD PRIMARY KEY (Nome,Genero);
 
 CREATE TABLE TECNICO (
-	ID_Tecnico INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	ID_Tecnico INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(30) NULL
 );
 

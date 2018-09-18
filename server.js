@@ -7,15 +7,7 @@ var path = require('path');
 var fs = require('fs');
 var busboy = require("then-busboy");
 var fileUpload = require('express-fileupload');
-var alimentar = [];
-var atividades = [];
-var interesses = [];
-var interesses_evento = [];
-var interesses_usuario = [];
-var usuarios = [];
-var end_usuario;
-var user_id;
-var filtro;
+
 /*Set EJS template Engine*/
 app.set('views','./views');
 app.set('view engine','ejs');
@@ -37,7 +29,6 @@ app.get('/', function (req, res) {
     connection.query('SELECT * FROM MODALIDADE', function (error, modalidades, fields) {
         if (error) throw error;
         console.log("Quantidade de modalidades:" + modalidades.length);
-        console.log(modalidades[0].Nome);
         //listar modalidades
         //listar jogos
         res.render('index', {modalidades:modalidades});
@@ -157,6 +148,27 @@ app.post('/novo_atleta', function(req, res) {
     });
 
 console.log(novo_atleta);
+});
+
+// Criar atleta
+app.post('/novo_tecnico', function(req, res) {
+    console.log("entrou em /novo_tecnico");
+    
+    //se formos colocar fotos
+    //var file = req.files.foto;
+    //var img_name=file.name;
+
+    var novo_tecnico = {
+        //foto: img_name,
+        Nome: req.body.nome,
+    };
+
+    connection.query("INSERT INTO TECNICO SET ?", novo_tecnico, function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
+
+console.log(novo_tecnico);
 });
 
 app.listen(3000, function () {
