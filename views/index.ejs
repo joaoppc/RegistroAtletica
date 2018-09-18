@@ -146,13 +146,14 @@
 
         <div class="row">
         <!-- AQUI VAI TER QUE FAZER UM FOR PELAS MODALIDADES -->
+        <% for(var modalidade=0; modalidade < modalidades.length; modalidade++) { %>
           <div class="col-lg-3 col-md-6 wow fadeInUp">
             <div class="mod">
               <img src="img/mod-1.jpg" class="img-fluid" alt="">
               <div class="mod-info">
                 <div class="mod-info-content">
-                  <h4>Futsal</h4>
-                  <span>Feminino</span>
+                  <h4><%=modalidades[modalidade].nome%></h4>
+                  <span><%=modalidades[modalidade].genero%></span>
                   <div class="social">
                     <a href=""><i class="ion ion-eye"></i></a>
                   </div>
@@ -161,51 +162,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="mod">
-              <img src="img/mod-2.jpg" class="img-fluid" alt="">
-              <div class="mod-info">
-                <div class="mod-info-content">
-                  <h4>Handebol</h4>
-                  <span>Feminino</span>
-                  <div class="social">
-                    <a href=""><i class="ion ion-eye"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="mod">
-              <img src="img/mod-3.jpg" class="img-fluid" alt="">
-              <div class="mod-info">
-                <div class="mod-info-content">
-                  <h4>Futsal</h4>
-                  <span>Masculino</span>
-                  <div class="social">
-                    <a href=""><i class="ion ion-eye"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-            <div class="mod">
-              <img src="img/mod-4.jpg" class="img-fluid" alt="">
-              <div class="mod-info">
-                <div class="mod-info-content">
-                  <h4>Voleibol</h4>
-                  <span>Masculino</span>
-                  <div class="social">
-                    <a href=""><i class="ion ion-eye"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <%}%>
       </div>
     </section><!-- #modalidades -->
 

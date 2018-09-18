@@ -27,23 +27,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-
-  <script>
-      $(document).ready(function(){
-        var Nome, Genero, Caixinha;
-        $("#submit").click(function(){
-          Nome=$("#nome").val();
-          Genero=$("#genero").val();
-          Caixinha=$("#caixinha").val();          
-          $.post("http://localhost:3000/nova_modalidade",{Nome:Nome, Genero:Genero, Caixinha:Caixinha}, function(data){
-            if(data==='done'){
-              alert("success");
-            }
-          });
-        });
-      });
-  </script>
-
 </head>
 
 <body>

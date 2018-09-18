@@ -39,7 +39,7 @@ app.get('/', function (req, res) {
         console.log("Quantidade de modalidades:" + modalidades.length);
         //listar modalidades
         //listar jogos
-        res.render('index', {mods:modalidades});
+        res.render('index', {modalidades:modalidades});
     });
 });
 
