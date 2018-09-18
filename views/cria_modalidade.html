@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Atlética Insper</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/Logo.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <script>
+      $(document).ready(function(){
+        var nome, genero, caixinha;
+        $("#submit").click(function(){
+          nome=$("#nome").val();
+          genero=$("#genero").val();
+          caixinha=$("#caixinha").val();          
+          $.post("http://localhost:3000/nova_modalidade",{nome:nome, genero:genero, caixinha:caixinha}, function(data){
+            if(data==='done')
+              {
+                alert("success");
+              }
+          });
+          });
+        });
+    </script>
+
+  <!-- =======================================================
+    Theme Name: BizPage
+    Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+<!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+            <div class="carousel-background"><img src="img/intro-carousel/1.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <!--
+                <h2>Atlética Insper</h2>
+                <p>Logo</p> -->
+                <img src="img/Logo.png" alt="" width="20%" height="20%">
+                </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <!--
+                <h2>Atlética Insper</h2>
+                <p>Logo</p> -->
+                <img src="img/Logo.png" alt="" width="20%" height="20%">
+            </div>
+          </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="img/intro-carousel/3.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <!--
+                <h2>Atlética Insper</h2>
+                <p>Logo</p> -->
+                <img src="img/Logo.png" alt="" width="20%" height="20%">
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Próxima</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- #intro -->
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="#intro" class="scrollto">ATLÉTICA INSPER</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!--<a href="#intro"><img src="img/Logo.png" alt="" title="" /></a> -->
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li><a href="#intro">Página Inicial</a></li>
+          <li class="menu-active"><a href="#modalidade">Modalidades</a></li>
+          <li><a href="#jogo">Próximos Jogos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+
+  <main id="main">
+
+    <!--==========================
+      Modalidades
+    ============================-->
+    <section id="modalidade">
+      <div class="container">
+        <div class="section-header wow fadeInUp">
+          <h3>Modalidades</h3>
+          <p>Adicione uma modalidade</p>
+        </div>
+
+        <form class="form-horizontal" action="/nova_modalidade" align="center">
+          <div class="form-group" align="center">
+            <label class="control-label col-sm-2" for="nome">Nome:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="nome" placeholder="Nome da modalidade" name="nome">
+            </div>
+          </div>
+    
+        <div class="form-group" align="center">
+          <label class="control-label col-sm-2" for="genero">Gênero:</label>
+          <div class="col-sm-10">          
+            <select type="select" class="form-control" id="genero" name="genero">
+              <option value="f">Feminino</option>
+              <option value="m">Masculino</option>
+            </select>
+          </div>
+        </div>
+     
+        <div class="form-group" align="center">
+          <label class="control-label col-sm-2" for="caixinha">Caixinha:</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="caixinha" placeholder="Valor" name="caixinha">
+          </div>
+        </div>
+    
+        <div class="form-group" align="center">        
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" value="Criar Modalidade">Criar</button>
+          </div>
+        </div>
+    </form>
+  </div>
+  </section><!-- #modalidades -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>Atlética Insper</h3>
+            <img src="img/Logo.png" alt="" width="40%" height="40%">
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Links Uteis</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Página Inicial</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contato</h4>
+            <p>
+              Rua Quatá, 300 <br>
+              São Paulo, SP<br>
+              Brasil <br>
+              <strong>Telefone:</strong> 11 XXXX-XXXX<br>
+              <strong>Email:</strong> exemplo@examplo.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="https://www.facebook.com/AtleticaInsper/?ref=aymt_homepage_panel" class="facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/raposa_loka/" class="instagram"><i class="fa fa-instagram"></i></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/superfish/hoverIntent.js"></script>
+  <script src="lib/superfish/superfish.min.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
