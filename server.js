@@ -79,7 +79,31 @@ app.post('/nova_modalidade', function(req, res) {
 console.log(nova_mod);
 });
 
-// Criar modalidade
+// Criar endereço
+app.post('/novo_endereco', function(req, res) {
+    console.log("entrou em /novo_endereco");
+    
+    //se formos colocar fotos
+    //var file = req.files.foto;
+    //var img_name=file.name;
+
+    var novo_lugar = {
+        //foto: img_name,
+        Nome: req.body.nome_local,
+        Rua: req.body.rua,
+        Numero:req.body.numero
+    };
+
+    connection.query("INSERT INTO LUGAR SET ?", novo_lugar, function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
+
+console.log(novo_lugar);
+});
+
+
+// Criar jogo
 app.post('/novo_jogo', function(req, res) {
     console.log("entrou em /novo_jogo");
     
