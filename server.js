@@ -56,6 +56,14 @@ app.get('/novo_endereco', function(req, res) {
     res.sendFile('views/cria_lugar.html' , { root : __dirname});
  });
 
+app.get('/novo_tecnico', function(req, res) {
+    res.sendFile('views/cria_tecnico.html' , { root : __dirname});
+ });
+
+app.get('/novo_atleta', function(req, res) {
+    res.sendFile('views/cria_atleta.html' , { root : __dirname});
+ });
+
 // Criar modalidade
 app.post('/nova_modalidade', function(req, res) {
     console.log("entrou em /nova_modalidade");
@@ -125,6 +133,30 @@ app.post('/novo_jogo', function(req, res) {
     });
 
 console.log(novo_jogo);
+});
+
+// Criar atleta
+app.post('/novo_atleta', function(req, res) {
+    console.log("entrou em /novo_atleta");
+    
+    //se formos colocar fotos
+    //var file = req.files.foto;
+    //var img_name=file.name;
+
+    var novo_atleta = {
+        //foto: img_name,
+        Matricula: req.body.matricula,
+        Nome: req.body.nome,
+        Curso: req.body.curso,
+        Genero: req.body.genero,
+    };
+
+    connection.query("INSERT INTO ATLETA SET ?", novo_atleta, function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
+
+console.log(novo_atleta);
 });
 
 app.listen(3000, function () {

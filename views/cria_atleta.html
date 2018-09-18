@@ -46,8 +46,8 @@
         <ul class="nav-menu">
           <li><a href="#intro">Página Inicial</a></li>
           <li><a href="#modalidade">Modalidades</a></li>
-          <li class="menu-active"><a href="#jogo">Jogos</a></li>
-          <li><a href="#atleta">Atletas</a></li>
+          <li><a href="#jogo">Jogos</a></li>
+          <li class="menu-active"><a href="#atleta">Atletas</a></li>
           <li><a href="#tecnico">Técnicos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -123,58 +123,65 @@
     <!--==========================
       Modalidades
     ============================-->
-    <section id="modalidade">
+    <section id="atleta">
       <div class="container">
         <div class="section-header wow fadeInUp">
-          <h3>Jogos</h3>
-          <p>Adicione um lugar</p>
+          <h3>Atletas</h3>
+          <p>Adicione um atleta</p>
         </div>
 
-        <form class="form-horizontal" action="/novo_endereco" method="post" align="center" enctype="multipart/form-data">
+        <form class="form-horizontal" action="/novo_atleta" method="post" align="center" enctype="multipart/form-data">
 
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="nome_local">Nome:</label>
+          <label class="control-label col-sm-2" for="nome">Nome:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome_local" name="nome_local" placeholder="Insira um nome para o local">
+            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo do atleta">
           </div>
         </div>
 
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="rua">Endereço:</label>
+          <label class="control-label col-sm-2" for="matricula">Matrícula:</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="rua" name="rua" placeholder="Insira o nome da rua">
+            <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Número de matrícula">
           </div>
         </div>
 
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="nome_local">Número:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="numero" name="numero" placeholder="Insira o número da rua">
+          <label class="control-label col-sm-2" for="genero">Gênero:</label>
+          <div class="col-sm-10">          
+            <select type="select" class="form-control" id="genero" name="genero">
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" align="center">
+          <label class="control-label col-sm-2" for="curso">Curso:</label>
+          <div class="col-sm-10">          
+            <select type="select" class="form-control" id="curso" name="curso">
+              <option value="Administração">Administração</option>
+              <option value="Economia">Economia</option>
+              <option value="Engenharia de Computação">Engenharia de Computação</option>
+              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
+              <option value="Engenharia Mecatrônica">Engenharia Mecatrônica</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" align="center">
+          <label class="control-label col-sm-2" for="socio">Sócio:</label>
+          <div class="col-sm-10">          
+            <input type="radio" name="socio" value="true">
           </div>
         </div>
     
         <div class="form-group" align="center">        
           <div class="col-sm-offset-2 col-sm-10">
-            <input  name="submit" type="submit" class="btn btn-default" value="Criar Endereço"></input>
+            <input  name="submit" type="submit" class="btn btn-default" value="Criar Atleta"></input>
           </div>
         </div>
     </form>
-
-    <script>
-      $(document).ready(function(){
-        var Nome_Lugar, Rua, Numero;
-        $("#submit").click(function(){
-          Nome_Lugar=$("#nome_local").val();
-          Rua=$("#rua").val();
-          Numero=$("#numero").val();          
-          $.post("http://localhost:3000/novo_endereco",{Nome_Lugar:Nome_Lugar, Rua:Rua, Numero:Numero}, function(data){
-            if(data=='done'){
-              alert("success");
-            }
-          });
-        });
-      });
-  </script>
   </div>
   </section><!-- #modalidades -->
 
