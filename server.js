@@ -80,10 +80,12 @@ app.get('/modalidade/:Nome_Mod', function(req,res){
     var Nome_Mod = req.params.Nome_Mod;
     console.log(Nome_Mod);
 
-    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?',[Nome_Mod], function (error, modalidade, fields)  {
-        if(error) throw error;        
+    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?; SELECT * FROM TREINO WHERE Nome_Mod = ?',[Nome_Mod, Nome_Mod], function (error, mod_treino, fields)  {
+        if(error) throw error;  
+        console.log(mod_treino[0])
+        console.log(mod_treino[1])      
 
-        res.render('modalidade',{modalidade:modalidade});
+        res.render('modalidade',{modalidade:mod_treino[0], treinos:mod_treino[1]});
         console.log(modalidade);
     });
 });

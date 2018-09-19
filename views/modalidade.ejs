@@ -145,8 +145,9 @@
               <h4>Caixinha:</h4>
               <p><%=modalidade[0].Caixinha%> reais</p>
               <h4>Treinos:</h4>
-              <p>Terça: 21h</p>
-              <center><button align="center" id="cria_treino" href="novo_treino/<%=modalidade[0].Nome%>" type="submit">Novo Treino</button></center><br>
+              <% for(var treino=0; treino < treinos.length; treino++) { %>
+              <p><%=treinos[treino].Dia%>: <%=treinos[treino].Horario%></p>
+              <%}%>
             </div>
           </div>
 
