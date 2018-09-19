@@ -22,8 +22,8 @@ app.use(fileUpload());
 
 var connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'Joao123pedro',
+    user: 'rachelpbm',
+    password: 'adgjlra1',
     database: 'atletica',
     multipleStatements: true
 })
@@ -99,6 +99,18 @@ app.get('/modalidade/:Nome_Mod', function(req,res){
 
         res.render('modalidade',{modalidade:mod_treino_atl[0], treinos:mod_treino_atl[1],atletas:mod_treino_atl[2],tecnico:mod_treino_atl[3]});
         console.log(modalidade);
+    });
+});
+
+app.get('/jogo/:ID_Jogo', function(req,res){
+    console.log("Entrou em jogo/");
+    var ID_Jogo = req.params.ID_Jogo;
+    console.log(ID_Jogo);
+    //precisa fazer um join de atletas e atletas modalidades
+    connection.query('SELECT * FROM JOGO INNER JOIN LUGAR ON JOGO.ID_Lugar = LUGAR.ID_Lugar WHERE ID_Jogo = ?',[ID_Jogo], function (error, jogo_lugar, fields)  {
+        if(error) throw error;      
+
+        res.render('jogo',{jogo_lugar:jogo_lugar});
     });
 });
 
