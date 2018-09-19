@@ -1013,6 +1013,24 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #e6e6e6;
 }
 
+#jogo .social {
+  margin-top: 15px;
+}
+
+#jogo .social a {
+  transition: none;
+  color: #fff;
+}
+
+#jogo .social a:hover {
+  color: #cd1431;
+}
+
+#jogo .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+
 #treino button[type="submit"] {
   background: #cd1431;
   border: 0;

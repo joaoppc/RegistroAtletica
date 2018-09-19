@@ -159,7 +159,7 @@
                   <span>Caixinha: <%=modalidades[modalidade].Caixinha%> reais</span>
                   <div class="social">
                     <a href="modalidade/<%=modalidades[modalidade].Nome%>"><i class="ion ion-eye"></i></a>
-                    <a href="deleta/<%=modalidades[modalidade].Nome%>"><i class="ion-ios-trash"></i></a>
+                    <a href="deleta_mod/<%=modalidades[modalidade].Nome%>"><i class="ion-ios-trash"></i></a>
                   </div>
                 </div>
               </div>
@@ -189,7 +189,10 @@
             <div class="jogo-wrap">
               <figure>
                 <img src="img/jogos/app1.jpg" class="img-fluid" alt="">
-                <a href="jogo/<%=jogo[i].ID_Jogo%>" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                <div class="social" align="center">
+                  <center><a href="jogo/<%=jogo[i].ID_Jogo%>" ><i class="ion ion-eye"></i></a>
+                  <a href="deleta_jogo/<%=jogo[i].ID_Jogo%>"><i class="ion-ios-trash"></i></a></center>
+                </div>
               </figure>
 
               <div class="jogo-info">
