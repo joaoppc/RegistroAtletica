@@ -74,21 +74,8 @@ CREATE TABLE JOGO (
     ID_Lugar INTEGER NOT NULL,
     Horario TIMESTAMP NULL,
     Adversario VARCHAR(30), 
-    ID_Jogo INTEGER NOT NULL 
-);
-
-
-
-ALTER TABLE JOGO
-	ADD PRIMARY KEY (Nome_Mod,Genero_Mod,ID_Lugar);
-    
-    
-
-        
-ALTER TABLE JOGO
-    ADD FOREIGN KEY(Nome_Mod, Genero_Mod)
-		REFERENCES MODALIDADE(Nome, Genero);
-        
+    ID_Jogo INT NOT NULL PRIMARY KEY auto_increment
+);       
         
 ALTER TABLE JOGO
 	ADD FOREIGN KEY (ID_Lugar)

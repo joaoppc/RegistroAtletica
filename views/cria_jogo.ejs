@@ -147,8 +147,8 @@
           <label class="control-label col-sm-2" for="genero">Gênero:</label>
           <div class="col-sm-10">          
             <select type="select" class="form-control" id="genero" name="genero">
-              <option value="F">Feminino</option>
-              <option value="M">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Masculino">Masculino</option>
             </select>
           </div>
         </div>
@@ -157,9 +157,9 @@
           <label class="control-label col-sm-2" for="lugar">Lugar:</label>
           <div class="col-sm-10">          
             <select type="select" class="form-control" id="lugar" name="lugar">
-              //listar lugares cadastrados
-              <option value="1">Baetão</option>
-              <option value="5">Eda</option>
+              <% for(var lugar=0; lugar < lugares.length; lugar++) { %>
+              <option value="<%=lugares[lugar].ID_Lugar%>"><%=lugares[lugar].Nome%></option>
+              <%}%>
             </select>
           </div>
         </div>

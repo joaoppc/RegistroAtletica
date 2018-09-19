@@ -46,12 +46,12 @@ app.get('/nova_modalidade', function(req, res) {
  });
 
 app.get('/novo_jogo', function (req, res) {
-    connection.query('SELECT * FROM MODALIDADE', function (error, modalidades, fields) {
+    connection.query('SELECT * FROM MODALIDADE ; SELECT * FROM LUGAR;', [1,2] , function (error, mod_lugar, fields) {
         if (error) throw error;
-        modalidade = modalidades[0];
-        res.render('cria_jogo', {modalidades:modalidades});
+        console.log(mod_lugar[0])
+        console.log(mod_lugar[1])
+        res.render('cria_jogo', {modalidades:mod_lugar[0], lugares:mod_lugar[1]});
     });
-    console.log(modalidade);
 });
 
 app.get('/novo_endereco', function(req, res) {
@@ -126,10 +126,11 @@ app.post('/novo_jogo', function(req, res) {
         Nome_Mod: req.body.modalidade,
         Genero_Mod: req.body.genero,
         ID_Lugar: req.body.lugar,
+        Adversario: req.body.adversario,
         Horario: req.body.horario
     };
 
-    connection.query("INSERT INTO JOGOS_TREINO SET ?", novo_jogo, function (error, results, fields) {   
+    connection.query("INSERT INTO JOGO SET ?", novo_jogo, function (error, results, fields) {   
         if (error) throw error;
         res.redirect('/');
     });
