@@ -66,6 +66,10 @@ app.get('/novo_atleta', function(req, res) {
     res.sendFile('views/cria_atleta.html' , { root : __dirname});
  });
 
+app.get('/modalidade', function(req, res) {
+    res.sendFile('views/modalidade.html' , { root : __dirname});
+ });
+
 // Criar modalidade
 app.post('/nova_modalidade', function(req, res) {
     console.log("entrou em /nova_modalidade");
