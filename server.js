@@ -102,6 +102,18 @@ app.get('/modalidade/:Nome_Mod', function(req,res){
     });
 });
 
+app.get('/deleta/:Nome_Mod', function(req,res){
+    console.log("Entrou deleta/");
+    var Nome_Mod = req.params.Nome_Mod;
+    console.log(Nome_Mod);
+    //precisa fazer um join de atletas e atletas modalidades
+    connection.query('DELETE FROM MODALIDADE WHERE Nome = ?',[Nome_Mod], function (error){
+        if(error) throw error;      
+
+        res.redirect('/');
+    });
+});
+
 app.get('/jogo/:ID_Jogo', function(req,res){
     console.log("Entrou em jogo/");
     var ID_Jogo = req.params.ID_Jogo;
