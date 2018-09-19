@@ -146,6 +146,21 @@
               <p><%=jogo_lugar[0].Rua%>, <%=jogo_lugar[0].Numero%></p>
             </div>
           </div>
+
+           <div class="col-lg-4 col-md-8 wow" align="center">
+            <div>
+              <i class="mdi mdi-map-marker nino-icon"></i>
+              <h4>Rota:</h4>
+                <div ><center>
+                  <iframe
+                  width="400"
+                  height="250"
+                  frameborder="0" style="border:0"
+                  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyDOx1AA-PnUiKf-9YGL8Ozx1hshfwnTNlk&origin='Quatá,300'&destination=<%=jogo_lugar[0].Rua%>','<%=jogo_lugar[0].Numero%>" allowfullscreen>
+                </iframe></center>
+                </div>
+            </div>
+        </div>
       </div>
     </section><!-- #modalidades -->
 
