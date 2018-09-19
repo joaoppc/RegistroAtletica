@@ -48,8 +48,8 @@
           <li><a href="#modalidade">Modalidades</a></li>
           <li><a href="#jogo">Jogos</a></li>
           <li><a href="#treino">Treinos</a></li>
-          <li class="menu-active"><a href="#atleta">Atletas</a></li>
-          <li><a href="#tecnico">Técnicos</a></li>
+          <li><a href="#atleta">Atletas</a></li>
+          <li class="menu-active"><a href="#tecnico">Técnicos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
@@ -127,52 +127,45 @@
     <section id="atleta">
       <div class="container">
         <div class="section-header wow fadeInUp">
-          <h3>Atletas</h3>
-          <p>Adicione um atleta</p>
+          <h3>Técnicos</h3>
+          <p>Gerencie um técnico para uma modalidade</p>
         </div>
 
-        <form class="form-horizontal" action="/novo_atleta" method="post" align="center" enctype="multipart/form-data">
-
+        <form class="form-horizontal" action="/gerencia_atletas" method="post" align="center" enctype="multipart/form-data">
+    
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="nome">Nome:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo do atleta">
-          </div>
-        </div>
-
-        <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="matricula">Matrícula:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Número de matrícula">
-          </div>
-        </div>
-
-        <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="genero">Gênero:</label>
+          <label class="control-label col-sm-2" for="modalidade">Modalidade:</label>
           <div class="col-sm-10">          
-            <select type="select" class="form-control" id="genero" name="genero">
-              <option value="Feminino">Feminino</option>
-              <option value="Masculino">Masculino</option>
+            <select type="select" class="form-control" id="modalidade" name="modalidade">
+              <% for(var modalidade=0; modalidade < modalidades.length; modalidade++) { %>
+              <option value="<%=modalidades[modalidade].Nome%>"><%=modalidades[modalidade].Nome%></option>
+              <%}%>
             </select>
           </div>
         </div>
 
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="curso">Curso:</label>
+          <label class="control-label col-sm-2" for="id_tecnico">Técnico:</label>
           <div class="col-sm-10">          
-            <select type="select" class="form-control" id="curso" name="curso">
-              <option value="Administração">Administração</option>
-              <option value="Economia">Economia</option>
-              <option value="Engenharia de Computação">Engenharia de Computação</option>
-              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
-              <option value="Engenharia Mecatrônica">Engenharia Mecatrônica</option>
+            <select type="select" class="form-control" id="id_tecnico" name="id_tecnico">
+              <% for(var tecnico=0; tecnico < tecnicos.length; tecnico++) { %>
+              <option value="<%=tecnicos[tecnico].ID_Tecnico%>"><%=tecnicos[tecnico].Nome%></option>
+              <%}%>
             </select>
+          </div>
+        </div>
+
+        <div class="form-group" align="center">
+          <label class="control-label col-sm-2" for="salario">Salário:</label>
+          <div class="col-sm-10">          
+            <input type="text" class="form-control" id="salario" name="salario">
+          </div>
           </div>
         </div>
     
         <div class="form-group" align="center">        
           <div class="col-sm-offset-2 col-sm-10">
-            <input  name="submit" type="submit" class="btn btn-default" value="Criar Atleta"></input>
+            <input  name="submit" type="submit" class="btn btn-default" value="Adicionar atleta à modalidade"></input>
           </div>
         </div>
     </form>

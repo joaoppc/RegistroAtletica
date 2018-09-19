@@ -75,17 +75,29 @@ app.get('/novo_atleta', function(req, res) {
     res.sendFile('views/cria_atleta.html' , { root : __dirname});
  });
 
+app.get('/gerencia_atletas', function(req, res) {
+    connection.query('SELECT * FROM MODALIDADE ; SELECT * FROM ATLETA;', [1,2] , function (error, mod_atl, fields) {
+        if (error) throw error;
+        res.render('gerencia_atletas', {modalidades:mod_atl[0], atletas:mod_atl[1]});
+    });
+ });
+
+app.get('/gerencia_tecnicos', function(req, res) {
+    connection.query('SELECT * FROM MODALIDADE ; SELECT * FROM TECNICO;', [1,2] , function (error, mod_tec, fields) {
+        if (error) throw error;
+        res.render('gerencia_atletas', {modalidades:mod_tec[0], tecnicos:mod_tec[1]});
+    });
+ });
+
 app.get('/modalidade/:Nome_Mod', function(req,res){
     console.log("Entrou em modalidade/");
     var Nome_Mod = req.params.Nome_Mod;
     console.log(Nome_Mod);
+    //precisa fazer um join de atletas e atletas modalidades
+    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?; SELECT * FROM TREINO WHERE Nome_Mod = ?',[Nome_Mod, Nome_Mod], function (error, mod_treino_atl, fields)  {
+        if(error) throw error;      
 
-    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?; SELECT * FROM TREINO WHERE Nome_Mod = ?',[Nome_Mod, Nome_Mod], function (error, mod_treino, fields)  {
-        if(error) throw error;  
-        console.log(mod_treino[0])
-        console.log(mod_treino[1])      
-
-        res.render('modalidade',{modalidade:mod_treino[0], treinos:mod_treino[1]});
+        res.render('modalidade',{modalidade:mod_treino_atl[0], treinos:mod_treino_atl[1]});
         console.log(modalidade);
     });
 });
@@ -208,7 +220,25 @@ app.post('/novo_atleta', function(req, res) {
 console.log(novo_atleta);
 });
 
-// Criar atleta
+// Gerencia atleta
+app.post('/gerencia_atletas', function(req, res) {
+    console.log("entrou em /gerencia_atletas");
+
+    var atl_mod = {
+        //foto: img_name,
+        Matricula_Atl: req.body.matricula,
+        Nome_Mod: req.body.modalidade
+    };
+
+    connection.query("INSERT INTO ATLETA_MODALIDADE SET ?", atl_mod, function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
+
+console.log(atl_mod);
+});
+
+// Criar tecnico
 app.post('/novo_tecnico', function(req, res) {
     console.log("entrou em /novo_tecnico");
     
@@ -227,6 +257,25 @@ app.post('/novo_tecnico', function(req, res) {
     });
 
 console.log(novo_tecnico);
+});
+
+// Gerencia tecnicos
+app.post('/gerencia_tecnicos', function(req, res) {
+    console.log("entrou em /gerencia_tecnicos");
+
+    var tec_mod = {
+        //foto: img_name,
+        ID_Tecnico: req.body.id_tecnico,
+        Nome_Mod: req.body.modalidade,
+        Salario: req.body.salario
+    };
+
+    connection.query("INSERT INTO TREINADOS_MOD SET ?", atl_mod, function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
+
+console.log(atl_mod);
 });
 
 app.listen(3000, function () {

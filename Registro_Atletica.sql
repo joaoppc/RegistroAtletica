@@ -5,11 +5,10 @@ USE atletica;
 CREATE TABLE ATLETA (
 	Matricula INTEGER NOT NULL,
     Nome VARCHAR(30) NOT NULL,
-    Curso VARCHAR(20) NOT NULL,
+    Curso VARCHAR(30) NOT NULL,
     Genero VARCHAR(10) NULL,
     Imagem blob NULL,
-    CHECK (Genero = 'Masculino' OR Genero = 'Feminino'),
-    Socio BOOLEAN NOT NULL
+    CHECK (Genero = 'Masculino' OR Genero = 'Feminino')
 );
 
 ALTER TABLE ATLETA
@@ -47,7 +46,7 @@ CREATE TABLE ATLETA_MODALIDADE (
     Matricula_Atl INTEGER NOT NULL,
     Frequencia INTEGER NULL,
     Jogos INTEGER NULL,
-    Caixinha_Paga BOOLEAN NOT NULL
+    Caixinha_Paga BOOLEAN
 );
 
 
