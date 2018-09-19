@@ -22,8 +22,8 @@ app.use(fileUpload());
 
 var connection = mysql.createConnection({
     host: 'localhost',
-    user: 'rachelpbm',
-    password: 'adgjlra1',
+    user: 'root',
+    password: 'Joao123pedro',
     database: 'atletica',
     multipleStatements: true
 })
@@ -85,7 +85,7 @@ app.get('/gerencia_atletas', function(req, res) {
 app.get('/gerencia_tecnicos', function(req, res) {
     connection.query('SELECT * FROM MODALIDADE ; SELECT * FROM TECNICO;', [1,2] , function (error, mod_tec, fields) {
         if (error) throw error;
-        res.render('gerencia_atletas', {modalidades:mod_tec[0], tecnicos:mod_tec[1]});
+        res.render('gerencia_tecnicos', {modalidades:mod_tec[0], tecnicos:mod_tec[1]});
     });
  });
 
@@ -94,10 +94,10 @@ app.get('/modalidade/:Nome_Mod', function(req,res){
     var Nome_Mod = req.params.Nome_Mod;
     console.log(Nome_Mod);
     //precisa fazer um join de atletas e atletas modalidades
-    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?; SELECT * FROM TREINO WHERE Nome_Mod = ?',[Nome_Mod, Nome_Mod], function (error, mod_treino_atl, fields)  {
+    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?; SELECT * FROM TREINO WHERE Nome_Mod = ? ; SELECT * FROM ATLETA INNER JOIN ATLETA_MODALIDADE ON ATLETA.Matricula = ATLETA_MODALIDADE.Matricula WHERE Nome_Mod = ? ;SELECT * FROM TECNICO INNER JOIN TREINADOR_MOD ON TECNICO.ID_Tecnico = TREINADOR_MOD.ID_Tecnico WHERE Nome_Mod = ? ',[Nome_Mod, Nome_Mod,Nome_Mod,Nome_Mod], function (error, mod_treino_atl, fields)  {
         if(error) throw error;      
 
-        res.render('modalidade',{modalidade:mod_treino_atl[0], treinos:mod_treino_atl[1]});
+        res.render('modalidade',{modalidade:mod_treino_atl[0], treinos:mod_treino_atl[1],atletas:mod_treino_atl[2],tecnico:mod_treino_atl[3]});
         console.log(modalidade);
     });
 });
@@ -226,7 +226,7 @@ app.post('/gerencia_atletas', function(req, res) {
 
     var atl_mod = {
         //foto: img_name,
-        Matricula_Atl: req.body.matricula,
+        Matricula: req.body.matricula,
         Nome_Mod: req.body.modalidade
     };
 
@@ -270,12 +270,12 @@ app.post('/gerencia_tecnicos', function(req, res) {
         Salario: req.body.salario
     };
 
-    connection.query("INSERT INTO TREINADOS_MOD SET ?", atl_mod, function (error, results, fields) {   
+    connection.query("INSERT INTO TREINADOR_MOD SET ?", tec_mod, function (error, results, fields) {   
         if (error) throw error;
         res.redirect('/');
     });
 
-console.log(atl_mod);
+
 });
 
 app.listen(3000, function () {
