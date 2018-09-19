@@ -58,6 +58,15 @@ app.get('/novo_endereco', function(req, res) {
     res.sendFile('views/cria_lugar.html' , { root : __dirname});
  });
 
+app.get('/novo_treino', function(req, res) {
+    connection.query('SELECT * FROM MODALIDADE ; SELECT * FROM LUGAR;', [1,2] , function (error, mod_lugar, fields) {
+        if (error) throw error;
+        console.log(mod_lugar[0])
+        console.log(mod_lugar[1])
+        res.render('cria_treino', {modalidades:mod_lugar[0], lugares:mod_lugar[1]});
+    });
+ });
+
 app.get('/novo_tecnico', function(req, res) {
     res.sendFile('views/cria_tecnico.html' , { root : __dirname});
  });
@@ -76,8 +85,7 @@ app.get('/modalidade/:Nome_Mod', function(req,res){
 
         res.render('modalidade',{modalidade:modalidade});
         console.log(modalidade);
-    }); 
-
+    });
 });
 
 // Criar modalidade
@@ -148,6 +156,30 @@ app.post('/novo_jogo', function(req, res) {
     });
 
 console.log(novo_jogo);
+});
+
+// Criar treino
+app.post('/novo_treino', function(req, res) {
+    console.log("entrou em /novo_treino");
+    
+    //se formos colocar fotos
+    //var file = req.files.foto;
+    //var img_name=file.name;
+
+    var novo_treino = {
+        //foto: img_name,
+        Nome_Mod: req.body.modalidade,
+        ID_Lugar: req.body.lugar,
+        Dia: req.body.dia,
+        Horario: req.body.horario
+    };
+
+    connection.query("INSERT INTO TREINO SET ?", novo_treino, function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
+
+console.log(novo_treino);
 });
 
 // Criar atleta

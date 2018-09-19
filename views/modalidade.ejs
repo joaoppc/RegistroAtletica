@@ -48,6 +48,7 @@
           <li><a href="#intro">Página Inicial</a></li>
           <li class="menu-active"><a href="#modalidade">Modalidades</a></li>
           <li><a href="#jogo">Jogos</a></li>
+          <li><a href="#treino">Treinos</a></li>
           <li><a href="#atleta">Atletas</a></li>
           <li><a href="#tecnico">Técnicos</a></li>
           <li><a href="#contato">Contato</a></li>
@@ -141,11 +142,11 @@
 
           <div class="col-lg-4 col-md-8 wow" align="center">
             <div>
-              <h4>Treinos:</h4>
-              <p>Terça: 21h</p>
               <h4>Caixinha:</h4>
               <p><%=modalidade[0].Caixinha%> reais</p>
-              <center><button align="center" id="cria_treino" href="novo_treino" type="submit">Novo Treino</button></center><br>
+              <h4>Treinos:</h4>
+              <p>Terça: 21h</p>
+              <center><button align="center" id="cria_treino" href="novo_treino/<%=modalidade[0].Nome%>" type="submit">Novo Treino</button></center><br>
             </div>
           </div>
 

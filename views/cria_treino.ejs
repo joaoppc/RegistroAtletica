@@ -47,8 +47,8 @@
           <li><a href="#intro">Página Inicial</a></li>
           <li><a href="#modalidade">Modalidades</a></li>
           <li><a href="#jogo">Jogos</a></li>
-          <li><a href="#treino">Treinos</a></li>
-          <li class="menu-active"><a href="#atleta">Atletas</a></li>
+          <li class="menu-active"><a href="#treino">Treinos</a></li>
+          <li><a href="#atleta">Atletas</a></li>
           <li><a href="#tecnico">Técnicos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
@@ -124,62 +124,61 @@
     <!--==========================
       Modalidades
     ============================-->
-    <section id="atleta">
+    <section id="modalidade">
       <div class="container">
         <div class="section-header wow fadeInUp">
-          <h3>Atletas</h3>
-          <p>Adicione um atleta</p>
+          <h3>Treino</h3>
+          <p>Gerencie um treino para uma modalidade</p>
         </div>
 
-        <form class="form-horizontal" action="/novo_atleta" method="post" align="center" enctype="multipart/form-data">
-
+        <form class="form-horizontal" action="/novo_treino" method="post" align="center" enctype="multipart/form-data">
+    
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="nome">Nome:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo do atleta">
-          </div>
-        </div>
-
-        <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="matricula">Matrícula:</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Número de matrícula">
-          </div>
-        </div>
-
-        <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="genero">Gênero:</label>
+          <label class="control-label col-sm-2" for="modalidade">Modalidade:</label>
           <div class="col-sm-10">          
-            <select type="select" class="form-control" id="genero" name="genero">
-              <option value="Feminino">Feminino</option>
-              <option value="Masculino">Masculino</option>
+            <select type="select" class="form-control" id="modalidade" name="modalidade">
+              <% for(var modalidade=0; modalidade < modalidades.length; modalidade++) { %>
+              <option value="<%=modalidades[modalidade].Nome%>"><%=modalidades[modalidade].Nome%></option>
+              <%}%>
             </select>
           </div>
         </div>
 
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="curso">Curso:</label>
+          <label class="control-label col-sm-2" for="lugar">Lugar:</label>
           <div class="col-sm-10">          
-            <select type="select" class="form-control" id="curso" name="curso">
-              <option value="Administração">Administração</option>
-              <option value="Economia">Economia</option>
-              <option value="Engenharia de Computação">Engenharia de Computação</option>
-              <option value="Engenharia Mecânica">Engenharia Mecânica</option>
-              <option value="Engenharia Mecatrônica">Engenharia Mecatrônica</option>
+            <select type="select" class="form-control" id="lugar" name="lugar">
+              <% for(var lugar=0; lugar < lugares.length; lugar++) { %>
+              <option value="<%=lugares[lugar].ID_Lugar%>"><%=lugares[lugar].Nome%></option>
+              <%}%>
             </select>
           </div>
         </div>
 
         <div class="form-group" align="center">
-          <label class="control-label col-sm-2" for="socio">Sócio:</label>
+          <label class="control-label col-sm-2" for="dia">Dia:</label>
           <div class="col-sm-10">          
-            <input type="radio" name="socio" value="true">
+            <select type="select" class="form-control" id="dia" name="dia">
+              <option value="Segunda">Segunda-feira</option>
+              <option value="Segunda">Terça-feira</option>
+              <option value="Segunda">Quarta-feira</option>
+              <option value="Segunda">Quinta-feira</option>
+              <option value="Segunda">Sexta-feira</option>
+            </select>
+          </div>
+        </div>
+
+     
+        <div class="form-group" align="center">
+          <label class="control-label col-sm-2" for="horario">Horário:</label>
+          <div class="col-sm-10">
+            <input type="time" class="form-control" id="horario" name="horario">
           </div>
         </div>
     
         <div class="form-group" align="center">        
           <div class="col-sm-offset-2 col-sm-10">
-            <input  name="submit" type="submit" class="btn btn-default" value="Criar Atleta"></input>
+            <input  name="submit" type="submit" class="btn btn-default" value="Criar Treino"></input>
           </div>
         </div>
     </form>

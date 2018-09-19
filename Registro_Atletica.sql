@@ -80,18 +80,13 @@ ALTER TABLE JOGO
 
 
 CREATE TABLE TREINO (
-	ID_Treino INTEGER NOT NULL,
+	ID_Treino INT NOT NULL auto_increment primary key,
 	Nome_Mod VARCHAR(30) NOT NULL,
     ID_Lugar INTEGER NOT NULL,
-    Horario TIMESTAMP NULL
-);
-
-ALTER TABLE TREINO
-	ADD PRIMARY KEY (Nome_Mod,ID_Lugar);
-    
-    
-
-        
+    Horario TIME NULL,
+    Dia varchar(30)
+); 
+            
 ALTER TABLE TREINO
     ADD FOREIGN KEY(Nome_Mod)
 		REFERENCES MODALIDADE(Nome);
