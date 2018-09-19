@@ -155,9 +155,9 @@
               <div class="mod-info">
                 <div class="mod-info-content">
                   <h4><%=modalidades[modalidade].Nome%></h4>
-                  <span><%=modalidades[modalidade].Genero%></span>
+                  <span>Caixinha: <%=modalidades[modalidade].Caixinha%> reais</span>
                   <div class="social">
-                    <a href=""><i class="ion ion-eye"></i></a>
+                    <a href="modalidade/<%=modalidades[modalidade].Nome%>"><i class="ion ion-eye"></i></a>
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@
               </figure>
 
               <div class="jogo-info">
-                <h4><a href="#"><%=jogo[i].Nome_Mod%> <%=jogo[i].Genero_Mod%></a></h4>
+                <h4><a href="#"><%=jogo[i].Nome_Mod%></a></h4>
                 <h4>INSPER vs <%=jogo[i].Adversario%></h4>
                 <p><%=jogo[i].Horario%></p>
               </div>

@@ -66,9 +66,19 @@ app.get('/novo_atleta', function(req, res) {
     res.sendFile('views/cria_atleta.html' , { root : __dirname});
  });
 
-app.get('/modalidade', function(req, res) {
-    res.sendFile('views/modalidade.html' , { root : __dirname});
- });
+app.get('/modalidade/:Nome_Mod', function(req,res){
+    console.log("Entrou em modalidade/");
+    var Nome_Mod = req.params.Nome_Mod;
+    console.log(Nome_Mod);
+
+    connection.query('SELECT * FROM MODALIDADE WHERE Nome = ?',[Nome_Mod], function (error, modalidade, fields)  {
+        if(error) throw error;        
+
+        res.render('modalidade',{modalidade:modalidade});
+        console.log(modalidade);
+    }); 
+
+});
 
 // Criar modalidade
 app.post('/nova_modalidade', function(req, res) {
@@ -81,7 +91,6 @@ app.post('/nova_modalidade', function(req, res) {
     var nova_mod = {
         //foto: img_name,
         Nome: req.body.nome,
-        Genero: req.body.genero,
         Caixinha:req.body.caixinha
     };
 
@@ -128,7 +137,6 @@ app.post('/novo_jogo', function(req, res) {
     var novo_jogo = {
         //foto: img_name,
         Nome_Mod: req.body.modalidade,
-        Genero_Mod: req.body.genero,
         ID_Lugar: req.body.lugar,
         Adversario: req.body.adversario,
         Horario: req.body.horario
