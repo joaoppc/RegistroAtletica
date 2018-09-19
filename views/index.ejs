@@ -190,7 +190,7 @@
         </div>
 
         <div class="row jogo-container">
-
+        <%for (var i = 0; i < jogo.length; i++){%>
           <div class="col-lg-4 col-md-6 jogo-item filter-sab wow fadeInUp">
             <div class="jogo-wrap">
               <figure>
@@ -200,76 +200,13 @@
               </figure>
 
               <div class="jogo-info">
-                <h4><a href="#">Basquete Masculino</a></h4>
-                <h4>INSPER vs FGV</h4>
+                <h4><a href="#"><%=jogo[i].Nome_Mod%> <%=jogo[i].Genero_Mod%></a></h4>
+                <h4>INSPER vs <%=jogo[i].Adversario%></h4>
                 <p>15/09 - Sábado</p>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 jogo-item filter-dom wow fadeInUp" data-wow-delay="0.1s">
-            <div class="jogo-wrap">
-              <figure>
-                <img src="img/jogos/natacao.jpg" class="img-fluid" alt="">
-                <a href="img/jogos/natacao.jpg" class="link-preview" data-lightbox="jogo" data-title="natacao" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="jogo-info">
-                <h4><a href="#">Natação</a></h4>
-                <h4>INSPER</h4>
-                <p>16/09 - Domingo</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 jogo-item filter-sab wow fadeInUp" data-wow-delay="0.2s">
-            <div class="jogo-wrap">
-              <figure>
-                <img src="img/jogos/1.jpg" class="img-fluid" alt="">
-                <a href="img/jogos/1.jpg" class="link-preview" data-lightbox="jogo" data-title="hand_fem" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="jogo-info">
-                <h4><a href="#">Handebol Feminino</a></h4>
-                <h4>INSPER vs ECA</h4>
-                <p>15/09 - Sábado</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 jogo-item filter-sab wow fadeInUp">
-            <div class="jogo-wrap">
-              <figure>
-                <img src="img/jogos/card2.jpg" class="img-fluid" alt="">
-                <a href="img/jogos/card2.jpg" class="link-preview" data-lightbox="jogo" data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="jogo-info">
-                <h4><a href="#">Voleibol Feminino</a></h4>
-                <h4>INSPER vs ESPM</h4>
-                <p>15/09 - Sábado</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 jogo-item filter-dom wow fadeInUp" data-wow-delay="0.1s">
-            <div class="jogo-wrap">
-              <figure>
-                <img src="img/jogos/web2.jpg" class="img-fluid" alt="">
-                <a href="img/jogos/web2.jpg" class="link-preview" data-lightbox="jogo" data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
-                <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
-              </figure>
-
-              <div class="jogo-info">
-                <h4><a href="#">Futsal Feminino</a></h4>
-                <h4>INSPER vs EFEE</h4>
-                <p>16/09 - Domingo</p>
-              </div>
-            </div>
-          </div>
+        <%}%>
         </div>
       </div>
       <center><button align="center" id="cria_jogo" href="novo_jogo" type="submit">Novo Jogo</button></center><br>

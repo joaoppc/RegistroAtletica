@@ -29,12 +29,15 @@ var connection = mysql.createConnection({
 })
 
 app.get('/', function (req, res) {
-    connection.query('SELECT * FROM MODALIDADE', function (error, modalidades, fields) {
+    connection.query('SELECT * FROM MODALIDADE ; SELECT * FROM Jogo;', [1,2] , function (error, mod_jogo, fields) {
         if (error) throw error;
-        console.log("Quantidade de modalidades:" + modalidades.length);
+        console.log("Quantidade de modalidades:" + mod_jogo.length);
+        console.log(mod_jogo[0])
+        console.log(mod_jogo[1])
+        //console.log(modalidades[0].Nome);
         //listar modalidades
         //listar jogos
-        res.render('index', {modalidades:modalidades});
+        res.render('index', {modalidades:mod_jogo[0],jogo:mod_jogo[1]});
     });
 });
 
