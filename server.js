@@ -138,6 +138,19 @@ app.get('/deleta_jogo/:ID_Jogo', function(req,res){
     });
 });
 
+app.get('/edita_jogo/:ID_Jogo', function(req,res){
+    console.log("Entrou no GET edita_jogo/");
+    var ID_Jogo = req.params.ID_Jogo;
+    console.log(ID_Jogo);
+    //precisa fazer um join de atletas e atletas modalidades
+    connection.query('SELECT * FROM MODALIDADE; SELECT * FROM LUGAR; SELECT * FROM JOGO WHERE ID_Jogo = ?',[ID_Jogo], function (error, dados, fields){
+        if(error) throw error;      
+        console.log(dados[2]);
+        console.log(dados[2][0].Nome_Mod);
+        res.render('edita_jogo',{modalidades:dados[0], lugares:dados[1], jogo:dados[2]});
+    });
+});
+
 // Criar modalidade
 app.post('/nova_modalidade', function(req, res) {
     console.log("entrou em /nova_modalidade");
@@ -206,6 +219,29 @@ app.post('/novo_jogo', function(req, res) {
     });
 
 console.log(novo_jogo);
+});
+
+// Edita jogo
+app.post('/edita_jogo/:ID_Jogo', function(req, res) {
+    console.log("entrou em /edita_jogo");
+    var ID_Jogo = req.params.ID_Jogo;
+    
+    //se formos colocar fotos
+    //var file = req.files.foto;
+    //var img_name=file.name;
+
+    var edit_jogo = {
+        //foto: img_name,
+        Nome_Mod: req.body.modalidade,
+        ID_Lugar: req.body.lugar,
+        Adversario: req.body.adversario,
+        Horario: req.body.horario
+    };
+
+    connection.query("UPDATE JOGO set ? WHERE ID_Jogo = ?", [edit_jogo, ID_Jogo], function (error, results, fields) {   
+        if (error) throw error;
+        res.redirect('/');
+    });
 });
 
 // Criar treino
